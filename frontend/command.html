@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Управление командами</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 id="botTitle">Команды бота</h1>
+            <button class="btn back-btn" id="backBtn">← Назад</button>
+        </header>
+        
+        <div class="command-list" id="commandList">
+            <!-- Команды будут здесь -->
+        </div>
+        
+        <button class="btn" id="addCommandBtn">Добавить команду</button>
+    </div>
+
+    <!-- Модальное окно для добавления команды -->
+    <div class="modal" id="commandModal" style="display:none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Новая команда</h2>
+            <form id="commandForm">
+                <input type="text" id="commandName" placeholder="Название команды (без /)" required>
+                <textarea id="commandResponse" placeholder="Ответ бота" rows="5" required></textarea>
+                <button type="submit" class="btn">Сохранить</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="command.js"></script>
+</body>
+</html>

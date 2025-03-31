@@ -1,5 +1,6 @@
 from sqlalchemy.orm import Session
-from app.schemas.variable import Variable, VariableCreate
+from app.schemas.variable import VariableCreate
+from app.models.variable import Variable
 
 def create_variable(db: Session, variable: VariableCreate, bot_id: int):
     db_variable = Variable(**variable.dict(), bot_id=bot_id)

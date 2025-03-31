@@ -10,6 +10,7 @@ class BotCreate(BotBase):
 class Bot(BotBase):
     id: int
     user_id: int
+    telegram_id: int
 
     class Config:
         from_attributes = True

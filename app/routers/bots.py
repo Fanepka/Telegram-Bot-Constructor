@@ -1,12 +1,12 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app.schemas.bot import BotCreate, Bot as BotSchema
+from app.models import Command
 from app.models.bot import Bot
 from app.crud.bot import create_bot
 from app.models.user import User
 from app.database import get_db
 from app.utils.security import get_current_user
-from app.services.bot_worker import BotWorker
 from app.services import bot_manager
 
 router = APIRouter()
@@ -39,5 +39,14 @@ async def delete_bot(
     db.delete(bot)
     db.commit()
     return {"status": "ok"}
+
+
+@router.get("/debug/commands")
+def debug_commands(db: Session = Depends(get_db)):
+    commands = db.query(Command).all()
+    return {
+        "count": len(commands),
+        "commands": [{"name": c.command_name, "response": c.response_text} for c in commands]
+    }
 
 

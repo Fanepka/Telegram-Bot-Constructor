@@ -11,6 +11,7 @@ def validate_telegram_token(bot_token: str):
                 status_code=400,
                 detail="Invalid Telegram bot token"
             )
+        return response.json().get("result").get("id")
     except requests.exceptions.RequestException:
         raise HTTPException(
             status_code=400,

@@ -29,6 +29,11 @@ class BotManager:
         
         self.active_bots[bot.id] = worker
 
+    async def register_handler(self, bot):
+        """Останавливает бота"""
+        if bot.id in self.active_bots:
+            await self.active_bots[bot.id]._register_handlers()
+
     async def _run_worker(self, worker):
         """Обертка для запуска воркера с обработкой ошибок"""
         try:
