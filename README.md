@@ -63,6 +63,6 @@
 
 1. Склонируйте репозиторий:
 ```bash
-git clone https://github.com/your-repo/telegram-bot-constructor.git
+git clone https://github.com/Fanepka/telegram-bot-constructor.git
 cd telegram-bot-constructor
 ```
